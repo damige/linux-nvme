@@ -9,14 +9,12 @@ index b92a7f767bfc..a143c72c3d0d 100644
 +static unsigned long default_ps_max_latency_us = 25000;
 +module_param(default_ps_max_latency_us, ulong, 0644);
 +MODULE_PARM_DESC(ps_max_latency_us,
-+		 "default max power saving latency; overridden per 
-device in sysfs");
++		 "default max power saving latency; overridden per device in sysfs");
 +
  static LIST_HEAD(nvme_ctrl_list);
  static DEFINE_SPINLOCK(dev_list_lock);
  
-@@ -1205,6 +1210,98 @@ static void nvme_set_queue_limits(struct 
-nvme_ctrl *ctrl,
+@@ -1205,6 +1210,98 @@ static void nvme_set_queue_limits(struct nvme_ctrl *ctrl,
  	blk_queue_write_cache(q, vwc, vwc);
  }
  
@@ -46,8 +44,7 @@ nvme_ctrl *ctrl,
 +		return;	/* APST isn't supported. */
 +
 +	if (ctrl->npss > 31) {
-+		dev_warn(ctrl->device, "NPSS is invalid; not using 
-APST\n");
++		dev_warn(ctrl->device, "NPSS is invalid; not using APST\n");
 +		return;
 +	}
 +
@@ -63,8 +60,7 @@ APST\n");
 +		int state;
 +
 +		/*
-+		 * Walk through all states from lowest- to 
-highest-power.
++		 * Walk through all states from lowest- to highest-power.
 +		 * According to the spec, lower-numbered states use more
 +		 * power.  NPSS, despite the name, is the index of the
 +		 * lowest-power state, not the number of states.
@@ -76,20 +72,15 @@ highest-power.
 +				table->entries[state] = target;
 +
 +			/*
-+			 * Is this state a useful non-operational state 
-for
-+			 * higher-power states to autonomously 
-transition to?
++			 * Is this state a useful non-operational state for
++			 * higher-power states to autonomously transition to?
 +			 */
 +			if (!(ctrl->psd[state].flags & 2))
-+				continue;  /* It's an operational state. 
-*/
++				continue;  /* It's an operational state. */
 +
 +			total_latency_us =
-+				
-(u64)cpu_to_le32(ctrl->psd[state].entry_lat) +
-+				+ 
-cpu_to_le32(ctrl->psd[state].exit_lat);
++				(u64)cpu_to_le32(ctrl->psd[state].entry_lat) +
++				+ cpu_to_le32(ctrl->psd[state].exit_lat);
 +			if (total_latency_us > ctrl->ps_max_latency_us)
 +				continue;
 +
@@ -112,8 +103,7 @@ cpu_to_le32(ctrl->psd[state].exit_lat);
 +	ret = nvme_set_features(ctrl, NVME_FEAT_AUTO_PST, apste,
 +				table, sizeof(*table), NULL);
 +	if (ret)
-+		dev_err(ctrl->device, "failed to set APST feature 
-(%d)\n", ret);
++		dev_err(ctrl->device, "failed to set APST feature (%d)\n", ret);
 +
 +	kfree(table);
 +}
@@ -121,10 +111,8 @@ cpu_to_le32(ctrl->psd[state].exit_lat);
 +static struct attribute_group nvme_dev_dynamic_attrs_group;
 +
  /*
-  * Initialize the cached copies of the Identify data and various 
-controller
-  * register in our nvme_ctrl structure.  This should be called as soon 
-as
+  * Initialize the cached copies of the Identify data and various controller
+  * register in our nvme_ctrl structure.  This should be called as soon as
 @@ -1271,6 +1368,10 @@ int nvme_init_identify(struct nvme_ctrl *ctrl)
  	ctrl->sgls = le32_to_cpu(id->sgls);
  	ctrl->kas = le16_to_cpu(id->kas);
@@ -143,13 +131,11 @@ as
 +
 +	nvme_configure_apst(ctrl);
 +
-+	sysfs_update_group(&ctrl->device->kobj, 
-&nvme_dev_dynamic_attrs_group);
++	sysfs_update_group(&ctrl->device->kobj, &nvme_dev_dynamic_attrs_group);
  	return ret;
  }
  EXPORT_SYMBOL_GPL(nvme_init_identify);
-@@ -1564,6 +1669,41 @@ static ssize_t nvme_sysfs_show_address(struct 
-device *dev,
+@@ -1564,6 +1669,41 @@ static ssize_t nvme_sysfs_show_address(struct device *dev,
  }
  static DEVICE_ATTR(address, S_IRUGO, nvme_sysfs_show_address, NULL);
  
@@ -160,8 +146,7 @@ device *dev,
 +{
 +	struct nvme_ctrl *ctrl = dev_get_drvdata(dev);
 +
-+	return snprintf(buf, PAGE_SIZE, "%llu\n", 
-ctrl->ps_max_latency_us);
++	return snprintf(buf, PAGE_SIZE, "%llu\n", ctrl->ps_max_latency_us);
 +}
 +
 +static ssize_t nvme_sysfs_store_ps_max_latency_us(
@@ -192,8 +177,7 @@ ctrl->ps_max_latency_us);
  static struct attribute *nvme_dev_attrs[] = {
  	&dev_attr_reset_controller.attr,
  	&dev_attr_rescan_controller.attr,
-@@ -1605,8 +1745,33 @@ static struct attribute_group 
-nvme_dev_attrs_group = {
+@@ -1605,8 +1745,33 @@ static struct attribute_group nvme_dev_attrs_group = {
  	.is_visible	= nvme_dev_attrs_are_visible,
  };
  
@@ -227,8 +211,7 @@ nvme_dev_attrs_group = {
  	NULL,
  };
  
-@@ -1991,6 +2156,7 @@ int nvme_init_ctrl(struct nvme_ctrl *ctrl, struct 
-device *dev,
+@@ -1991,6 +2156,7 @@ int nvme_init_ctrl(struct nvme_ctrl *ctrl, struct device *dev,
  	ctrl->quirks = quirks;
  	INIT_WORK(&ctrl->scan_work, nvme_scan_work);
  	INIT_WORK(&ctrl->async_event_work, nvme_async_event_work);
