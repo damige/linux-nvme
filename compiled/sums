@@ -1,0 +1,11 @@
+4.8.11
+
+SHA256
+32af0255e71c390122e9269f190b042bda5623d11c5a4ebbc15560f146ccc604  linux-nvme-4.8.11-1-x86_64.pkg.tar.xz
+bfd776acc9fe662f01e6eecd241fdc0036ef9b874df0c01dc018c42357fee979  linux-nvme-docs-4.8.11-1-x86_64.pkg.tar.xz
+d4db13cbfee5c74eb7060e3bb78a161eebea12e183bc053e7a98145970f78a73  linux-nvme-headers-4.8.11-1-x86_64.pkg.tar.xz
+
+MD5
+8cea146ead138229ec9d9c144d1dd031  linux-nvme-4.8.11-1-x86_64.pkg.tar.xz
+375acb4f6e286cb887c0060943f1b012  linux-nvme-docs-4.8.11-1-x86_64.pkg.tar.xz
+3cb81fffe5831cb624fe6e472ee81233  linux-nvme-headers-4.8.11-1-x86_64.pkg.tar.xz
