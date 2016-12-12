@@ -26,7 +26,7 @@ To manually patch your own kernel:
 <br />
 Patch using nvmepatch1-V4.patch, nvmepatch2-V4.patch, nvmepatch3-V4.patch.
 
-4.9 (currently testing only):
+4.9:
 <br />
 Patch using APST.patch, pm_qos1.patch, pm_qos2.patch, pm_qos3.patch, nvme.patch
 
