@@ -3,7 +3,7 @@
 Arch linux kernel plus NVME patches made by Andy Lutomirski 
 
 These patches enable NVME drives to enter lower power states.
-In my case (XPS13) it decreases idle usage by 0.5-1watt
+In my case (XPS13, linux-nvme4.9.0) it decreases idle usage by ~1.5watt (see Benchmarks file)
 
 To manually compile the Archlinux kernels from here, follow steps:
 
