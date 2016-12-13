@@ -44,4 +44,4 @@ Linux-NVME 4.9.0:
 Summary:
 System:   3.86 Watts on average with standard deviation 0.32 
 
-a 1.56W gain when running idle, great!
+a 1.56W gain when running idle, great! This is almost 30% power reduction for my device
