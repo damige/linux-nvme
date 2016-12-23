@@ -36,4 +36,5 @@ Patch using APST.patch, pm_qos1.patch, pm_qos2.patch, pm_qos3.patch, nvme.patch
 <br />
 <br />
 To test if the patch is working use:
-nvme get-feature -f 0x0c -H /dev/nvme0
+<br />
+"nvme get-feature -f 0x0c -H /dev/nvme0"
