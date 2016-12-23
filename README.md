@@ -22,6 +22,7 @@ To manually compile the Archlinux kernels from here, follow steps:
 <br />
 Also available on AUR: linux-nvme
 <br />
+<br />
 To manually patch your own kernel:
 4.8:
 <br />
