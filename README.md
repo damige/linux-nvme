@@ -24,6 +24,7 @@ Also available on AUR: linux-nvme
 <br />
 <br />
 To manually patch your own kernel:
+<br />
 4.8:
 <br />
 Patch using nvmepatch1-V4.patch, nvmepatch2-V4.patch, nvmepatch3-V4.patch.
