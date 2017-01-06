@@ -3,7 +3,7 @@
 Arch linux kernel plus NVME patches made by Andy Lutomirski 
 
 These patches enable NVME drives to enter lower power states.
-In my case (XPS13) it decreases idle usage by 0.5-1watt
+In my case (XPS13, linux-nvme4.9.0) it decreases idle usage by ~1.5watt (see Benchmarks file)
 
 To manually compile the Archlinux kernels from here, follow steps:
 
@@ -20,8 +20,11 @@ To manually compile the Archlinux kernels from here, follow steps:
 <br />
 <br />
 <br />
+Also available on AUR: linux-nvme
+<br />
 <br />
 To manually patch your own kernel:
+<br />
 4.8:
 <br />
 Patch using nvmepatch1-V4.patch, nvmepatch2-V4.patch, nvmepatch3-V4.patch.
@@ -29,5 +32,9 @@ Patch using nvmepatch1-V4.patch, nvmepatch2-V4.patch, nvmepatch3-V4.patch.
 4.9:
 <br />
 Patch using APST.patch, pm_qos1.patch, pm_qos2.patch, pm_qos3.patch, nvme.patch
-
-Also available on AUR: linux-nvme
+<br />
+<br />
+<br />
+To test if the patch is working use:
+<br />
+"nvme get-feature -f 0x0c -H /dev/nvme0"
