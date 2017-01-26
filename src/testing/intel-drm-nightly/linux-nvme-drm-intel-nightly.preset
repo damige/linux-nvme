@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
+<head>
+<title>aur.git - AUR Package Repositories</title>
+<meta name='generator' content='cgit '/>
+<meta name='robots' content='index, nofollow'/>
+<link rel='stylesheet' type='text/css' href='/css/cgit.css'/>
+<link rel='shortcut icon' href='/images/favicon.ico'/>
+<link rel='alternate' title='Atom feed' href='https://aur.archlinux.org/cgit/aur.git/atom/linux-drm-intel-nightly.preset?h=linux-drm-intel-nightly' type='application/atom+xml'/>
+<link rel='vcs-git' href='https://aur.archlinux.org/linux-drm-intel-nightly.git/' title='aur.git Git repository'/>
+</head>
+<body>
+		<div id="archnavbar" class="anb-aur">
+			<div id="archnavbarlogo"><h1><a href="/" title="Return to the main page">Arch Linux User Repository</a></h1></div>
+			<div id="archnavbarmenu">
+				<ul id="archnavbarlist">
+					<li id="anb-home"><a href="https://www.archlinux.org/" title="Arch news, packages, projects and more">Home</a></li>
+					<li id="anb-packages"><a href="https://www.archlinux.org/packages/" title="Arch Package Database">Packages</a></li>
+					<li id="anb-forums"><a href="https://bbs.archlinux.org/" title="Community forums">Forums</a></li>
+					<li id="anb-wiki"><a href="https://wiki.archlinux.org/" title="Community documentation">Wiki</a></li>
+					<li id="anb-bugs"><a href="https://bugs.archlinux.org/" title="Report and track bugs">Bugs</a></li>
+					<li id="anb-aur"><a href="/" title="Arch Linux User Repository">AUR</a></li>
+					<li id="anb-download"><a href="https://www.archlinux.org/download/" title="Get Arch Linux">Download</a></li>
+				</ul>
+			</div>
+		</div><!-- #archnavbar -->
+<div id='cgit'><table id='header'>
+<tr>
+<td class='main'>AUR : linux-drm-intel-nightly.git</td></tr>
+<tr><td class='sub'>AUR Package Repositories | click <a href='/packages/linux-drm-intel-nightly/'>here</a> to return to the package details page</td><td class='sub right'></td></tr></table>
+<table class='tabs'><tr><td>
+<a href='/cgit/aur.git/?h=linux-drm-intel-nightly'>summary</a><a href='/cgit/aur.git/log/linux-drm-intel-nightly.preset?h=linux-drm-intel-nightly'>log</a><a class='active' href='/cgit/aur.git/tree/linux-drm-intel-nightly.preset?h=linux-drm-intel-nightly'>tree</a><a href='/cgit/aur.git/commit/linux-drm-intel-nightly.preset?h=linux-drm-intel-nightly'>commit</a><a href='/cgit/aur.git/diff/linux-drm-intel-nightly.preset?h=linux-drm-intel-nightly'>diff</a><a href='/cgit/aur.git/stats/linux-drm-intel-nightly.preset?h=linux-drm-intel-nightly'>stats</a></td><td class='form'><form class='right' method='get' action='/cgit/aur.git/log/linux-drm-intel-nightly.preset'>
+<input type='hidden' name='h' value='linux-drm-intel-nightly'/><select name='qt'>
+<option value='grep'>log msg</option>
+<option value='author'>author</option>
+<option value='committer'>committer</option>
+<option value='range'>range</option>
+</select>
+<input class='txt' type='text' size='10' name='q' value=''/>
+<input type='submit' value='search'/>
+</form>
+</td></tr></table>
+<div class='path'>path: <a href='/cgit/aur.git/tree/?h=linux-drm-intel-nightly'>root</a>/<a href='/cgit/aur.git/tree/linux-drm-intel-nightly.preset?h=linux-drm-intel-nightly'>linux-drm-intel-nightly.preset</a></div><div class='content'>blob: 51d0268a755d4740f099b34b71048f802be6fcc1 (<a href='/cgit/aur.git/plain/linux-drm-intel-nightly.preset?h=linux-drm-intel-nightly'>plain</a>)
+<table summary='blob content' class='blob'>
+<tr><td class='linenumbers'><pre><a id='n1' href='#n1'>1</a>
+<a id='n2' href='#n2'>2</a>
+<a id='n3' href='#n3'>3</a>
+<a id='n4' href='#n4'>4</a>
+<a id='n5' href='#n5'>5</a>
+<a id='n6' href='#n6'>6</a>
+<a id='n7' href='#n7'>7</a>
+<a id='n8' href='#n8'>8</a>
+<a id='n9' href='#n9'>9</a>
+<a id='n10' href='#n10'>10</a>
+<a id='n11' href='#n11'>11</a>
+<a id='n12' href='#n12'>12</a>
+<a id='n13' href='#n13'>13</a>
+<a id='n14' href='#n14'>14</a>
+</pre></td>
+<td class='lines'><pre><code># mkinitcpio preset file for the &apos;linux&apos; package
+
+ALL_config=&quot;/etc/mkinitcpio.conf&quot;
+ALL_kver=&quot;/boot/vmlinuz-linux-drm-intel-nightly&quot;
+
+PRESETS=(&apos;default&apos; &apos;fallback&apos;)
+
+#default_config=&quot;/etc/mkinitcpio.conf&quot;
+default_image=&quot;/boot/initramfs-linux-drm-intel-nightly.img&quot;
+#default_options=&quot;&quot;
+
+#fallback_config=&quot;/etc/mkinitcpio.conf&quot;
+fallback_image=&quot;/boot/initramfs-linux-drm-intel-nightly-fallback.img&quot; 
+fallback_options=&quot;-S autodetect&quot;
+</code></pre></td></tr></table>
+</div> <!-- class=content -->
+<div id="footer">
+	<p>
+		Copyright &copy; 2004-2014 aurweb Development Team &ndash;
+		<strong>AUR packages are user produced content. Any use of the provided files is at your own risk.</strong>
+	</p>
+</div>
+</div> <!-- id=cgit -->
+</body>
+</html>
