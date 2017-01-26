@@ -33,6 +33,10 @@ Patch using nvmepatch1-V4.patch, nvmepatch2-V4.patch, nvmepatch3-V4.patch.
 <br />
 Patch using APST.patch, pm_qos1.patch, pm_qos2.patch, pm_qos3.patch, nvme.patch
 <br />
+4.10(testing):
+<br />
+Patch using APST.patch
+<br />
 <br />
 <br />
 To test if the patch is working use:
