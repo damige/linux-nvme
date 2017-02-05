@@ -24,13 +24,13 @@ Also available on AUR: linux-nvme
 <br />
 <br />
 To manually patch your own kernel:
-
+<br />
 4.8:
 Patch using nvmepatch1-V4.patch, nvmepatch2-V4.patch, nvmepatch3-V4.patch.
-
+<br />
 4.9:
 Patch using APST.patch, pm_qos1.patch, pm_qos2.patch, pm_qos3.patch, nvme.patch
-
+<br />
 4.10(testing):
 Patch using APST.patch
 <br />
