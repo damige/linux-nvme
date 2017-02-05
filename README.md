@@ -26,20 +26,20 @@ Also available on AUR: linux-nvme
 To manually patch your own kernel:
 
 4.8:
-
 Patch using nvmepatch1-V4.patch, nvmepatch2-V4.patch, nvmepatch3-V4.patch.
 
 4.9:
-
 Patch using APST.patch, pm_qos1.patch, pm_qos2.patch, pm_qos3.patch, nvme.patch
 
 4.10(testing):
-
 Patch using APST.patch
 <br />
 <br />
 <br />
-To test if the patch is try:
+To Download binary:
+http://linuxnvme.damige.net/
+
+To test if the APST is working try:
 
 install nvme-cli and: "nvme get-feature -f 0x0c -H /dev/nvme0"
 Expected output is: "Autonomous Power State Transition Enable (APSTE): Enabled"
