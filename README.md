@@ -14,6 +14,7 @@ In my case (XPS13, linux-nvme4.9.0) it decreases idle usage by ~1.5watt (see Ben
 * pacman -U linux-nvme-*
 * Adjust your bootloader to boot linux-nvme
 <br />
+
 #### AUR: linux-nvme
 <br />
 #### REPO: Add this to your /etc/pacman.conf
@@ -22,7 +23,7 @@ In my case (XPS13, linux-nvme4.9.0) it decreases idle usage by ~1.5watt (see Ben
 SigLevel = Never
 Server = http://linuxnvme.damige.net/repo`
 <br />
-#### patch your own (non ARCH) kernel:
+#### Patch your own (non ARCH) kernel:
 <br />
 4.8:<br />
 Patch using nvmepatch1-V4.patch, nvmepatch2-V4.patch, nvmepatch3-V4.patch.
