@@ -1,10 +1,10 @@
 # linux-nvme
 
-Arch linux kernel plus NVME patches made by Andy Lutomirski 
-
+NVME kernel patches for linux made by Andy Lutomirski. (I maintain the PKGBUILD for linux-nvme on Arch-linux) 
+<br />
 These patches enable NVME drives to enter lower power states.
-In my case (XPS13, linux-nvme4.9.0) it decreases idle usage by ~1.5watt (see Benchmarks file)
-
+For example: my case (XPS13, linux-nvme4.9.0) it decreases idle usage by ~1.5watt (see Benchmarks file)
+<br />
 ## Options to use:
 #### ARCH manually compile kernels, follow steps:
 
