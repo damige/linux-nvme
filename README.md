@@ -6,7 +6,7 @@ These patches enable NVME drives to enter lower power states.
 In my case (XPS13, linux-nvme4.9.0) it decreases idle usage by ~1.5watt (see Benchmarks file)
 
 ## Options to use:
-#### Manually compile the Archlinux kernels, follow steps:
+#### ARCH manually compile kernels, follow steps:
 
 * git clone: https://github.com/damige/linux-nvme.git
 * go into /src/[kernel you want]
@@ -15,7 +15,7 @@ In my case (XPS13, linux-nvme4.9.0) it decreases idle usage by ~1.5watt (see Ben
 * Adjust your bootloader to boot linux-nvme
 <br />
 
-#### Patch your own (optionally non ARCH) kernel:
+#### non-ARCH/ARCH Patch your own kernel:
 4.8.x:<br />
 Patch using nvmepatch1-V4.patch, nvmepatch2-V4.patch, nvmepatch3-V4.patch.
 <br />
@@ -25,16 +25,16 @@ Patch using APST.patch, pm_qos1.patch, pm_qos2.patch, pm_qos3.patch, nvme.patch
 4.10.x:<br />
 Patch using APST.patch
 <br />
-#### AUR: linux-nvme
+#### ARCH-AUR: linux-nvme
 <br />
-#### REPO: Add this to your /etc/pacman.conf <br />
+#### ARCH-REPO: Add this to your /etc/pacman.conf <br />
 ```
 [linuxnvme]
 SigLevel = Never
 Server = http://linuxnvme.damige.net/repo
 ```
 <br />
-#### Download Arch binary:
+#### Arch download binary:
 http://linuxnvme.damige.net/
 <br />
 <br />
