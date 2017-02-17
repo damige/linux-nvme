@@ -8,7 +8,7 @@ These patches enable NVME drives to enter lower power states.<br />
 For example: my case (XPS13, linux-nvme4.9.0) it decreases idle usage by ~1.5watt (see Benchmarks file)<br />
 <br />
 ## 5 Ways to install:
-#### 1) ARCH manually compile kernels:
+#### 1) ARCH manually compile kernels: (EASY/SLOW)
 
 * git clone: https://github.com/damige/linux-nvme.git
 * go into /src/[kernel you want]
@@ -17,7 +17,7 @@ For example: my case (XPS13, linux-nvme4.9.0) it decreases idle usage by ~1.5wat
 * Adjust your bootloader to boot linux-nvme
 <br />
 
-#### 2) non-ARCH/ARCH Patch kernel of choice:
+#### 2) non-ARCH/ARCH Patch kernel of choice: (HARD/SLOW)
 4.8.x:<br />
 Patch using nvmepatch1-V4.patch, nvmepatch2-V4.patch, nvmepatch3-V4.patch.
 <br />
@@ -27,9 +27,12 @@ Patch using APST.patch, pm_qos1.patch, pm_qos2.patch, pm_qos3.patch, nvme.patch
 4.10.x:<br />
 Patch using APST.patch
 <br />
-#### 3) ARCH install from AUR: linux-nvme
+#### 3) ARCH install from AUR: linux-nvme (EASY/SLOW)
 <br />
-#### 4) ARCH REPO: Add this to your /etc/pacman.conf <br />
+Adjust your bootloader to boot linux-nvme
+<br />
+### If you chose to trust me compiling for you:<br />
+#### 4) ARCH REPO: Add this to your /etc/pacman.conf (EASY/FAST)<br />
 ```
 [linuxnvme]
 SigLevel = Never
@@ -41,9 +44,17 @@ install with:
 pacman -S linuxnvme/linux-nvme
 ```
 <br />
-#### 5) ARCH binary download:
+Adjust your bootloader to boot linux-nvme
+<br />
+#### 5) ARCH binary download: (EASY/FAST)
 http://linuxnvme.damige.net/
 <br />
+install with:
+```
+pacman -U linux-nvme-*
+```
+<br />
+Adjust your bootloader to boot linux-nvme
 <br />
 <br />
 ### To test if the APST is working try:
