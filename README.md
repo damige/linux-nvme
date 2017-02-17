@@ -48,13 +48,13 @@ http://linuxnvme.damige.net/
 <br />
 ### To test if the APST is working try:
 <br />
-install nvme-cli and: "nvme get-feature -f 0x0c -H /dev/nvme0"
-Expected output is: "Autonomous Power State Transition Enable (APSTE): Enabled"
+* install nvme-cli and: "nvme get-feature -f 0x0c -H /dev/nvme0" Expected output is: "Autonomous Power State Transition Enable (APSTE): Enabled"
 <br />
-Check if "/sys/class/nvme/nvme0/power/pm_qos_latency_tolerance_us" exists 
+* Check if "/sys/class/nvme/nvme0/power/pm_qos_latency_tolerance_us" exists 
 <br />
-Verify measurably lower power usage when ssd is idle
+* Verify measurably lower power usage when ssd is idle
 <br />
+
 ### Known issues:
 In the latest patches the samsung SM951 (as used in the XPS 9350) has been disabled for NVME APST.
 This is due to some reported instability.<br />
