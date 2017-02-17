@@ -44,3 +44,9 @@ Expected output is: "Autonomous Power State Transition Enable (APSTE): Enabled"
 Check if "/sys/class/nvme/nvme0/power/pm_qos_latency_tolerance_us" exists 
 <br />
 Verify measurably lower power usage when ssd is idle
+<br />
+### Known issues:
+In the latest patches the samsung SM951 (as used in the XPS 9350) has been disabled for NVME APST.
+This is due to some reported instability.
+I have not included the patch disabling this nvme drive, as i use it myself. Incase you want the full APST patch its listed as NVME-FULL.patch
+
