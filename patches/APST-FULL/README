@@ -1,0 +1,2 @@
+This APST patch includes the disabling of the samsung SM951 (as used in the XPS 9350).
+This is due to some reported instability. My regular PKGBUILDs/Precompiles does not use this patch.
