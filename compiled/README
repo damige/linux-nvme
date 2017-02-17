@@ -1,0 +1,8 @@
+location for the compiled kernels:
+http://linuxnvme.damige.net
+
+Or use repo:
+[linuxnvme]
+SigLevel = Never
+Server = http://linuxnvme.damige.net/repo
+
