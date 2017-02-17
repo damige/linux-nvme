@@ -14,6 +14,7 @@ In my case (XPS13, linux-nvme4.9.0) it decreases idle usage by ~1.5watt (see Ben
 * pacman -U linux-nvme-*
 * Adjust your bootloader to boot linux-nvme
 <br />
+
 #### Patch your own (optionally non ARCH) kernel:
 <br />
 4.8.x:<br />
