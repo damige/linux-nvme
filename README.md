@@ -47,6 +47,6 @@ Verify measurably lower power usage when ssd is idle
 <br />
 ### Known issues:
 In the latest patches the samsung SM951 (as used in the XPS 9350) has been disabled for NVME APST.
-This is due to some reported instability.
-I have not included the patch disabling this nvme drive, as i use it myself. Incase you want the full APST patch its listed as APST-FULL.patch
+This is due to some reported instability.<br />
+I have not included the patch disabling this nvme drive, as i use it myself. Incase you want the full APST patch its listed as APST-FULL.patch<br />
 I have had a single lock i can attribute to the ssd in the last 60 days, for me the benifit of these patches outways the occasional issue with specifically the SM951.
