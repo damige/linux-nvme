@@ -16,7 +16,6 @@ In my case (XPS13, linux-nvme4.9.0) it decreases idle usage by ~1.5watt (see Ben
 <br />
 
 #### Patch your own (optionally non ARCH) kernel:
-<br />
 4.8.x:<br />
 Patch using nvmepatch1-V4.patch, nvmepatch2-V4.patch, nvmepatch3-V4.patch.
 <br />
