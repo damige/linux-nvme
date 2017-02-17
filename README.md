@@ -2,7 +2,7 @@
 
 This github repository contains: <br /> 
 * NVME kernel patches for linux made by Andy Lutomirski. <br /> 
-* PKGBUILD for linux-nvme on Arch by me. <br /> 
+* PKGBUILD for linux-nvme on Arch maintained by me. <br /> 
 
 These patches enable NVME drives to enter lower power states.<br />
 For example: my case (XPS13, linux-nvme4.9.0) it decreases idle usage by ~1.5watt (see Benchmarks file)<br />
