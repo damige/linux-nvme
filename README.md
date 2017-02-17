@@ -17,8 +17,7 @@ In my case (XPS13, linux-nvme4.9.0) it decreases idle usage by ~1.5watt (see Ben
 
 #### AUR: linux-nvme
 <br />
-#### REPO: Add this to your /etc/pacman.conf
-<br />
+#### REPO: Add this to your /etc/pacman.conf <br />
 `[linuxnvme]
 SigLevel = Never
 Server = http://linuxnvme.damige.net/repo`
