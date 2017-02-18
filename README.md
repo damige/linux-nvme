@@ -15,7 +15,7 @@ For example: my case (XPS13, linux-nvme4.9.0) it decreases idle usage by ~1.5wat
 * go into /src/[kernel you want]
 * type "makepkg" -wait until compilation completes-
 * pacman -U linux-nvme-*
-* Adjust your bootloader to boot linux-nvme
+* Adjust your bootloader of choice to boot linux-nvme
 <br />
 
 #### 2) non-ARCH/ARCH Patch kernel of choice: (HARD/SLOW)
@@ -31,7 +31,7 @@ Patch using APST.patch
 #### 3) ARCH AUR:(EASY/SLOW)
 * use AUR helper of choice to install "linux-nvme"
 <br />
-* Adjust your bootloader to boot linux-nvme
+* Adjust your bootloader of choice to boot linux-nvme
 <br />
 
 ### If you choose to trust me compiling it for you:<br />
@@ -49,7 +49,7 @@ pacman -Sy
 pacman -S linuxnvme/linux-nvme
 ```
 <br />
-* Adjust your bootloader to boot linux-nvme
+* Adjust your bootloader of choice to boot linux-nvme
 <br />
 
 #### 5) ARCH binary download: (EASY/FAST)
@@ -61,7 +61,7 @@ pacman -S linuxnvme/linux-nvme
 pacman -U linux-nvme-*
 ```
 <br />
-* Adjust your bootloader to boot linux-nvme
+* Adjust your bootloader of choice to boot linux-nvme
 <br />
 <br />
 
