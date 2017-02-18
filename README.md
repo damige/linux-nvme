@@ -7,6 +7,7 @@ This github repository contains: <br />
 These patches enable NVME drives to enter lower power states.<br />
 For example: my case (XPS13, linux-nvme4.9.0) it decreases idle usage by ~1.5watt (see Benchmarks file)<br />
 <br />
+
 ## 5 Ways to install:
 #### 1) ARCH manually compile kernels: (EASY/SLOW)
 
@@ -27,36 +28,42 @@ Patch using APST.patch, pm_qos1.patch, pm_qos2.patch, pm_qos3.patch, nvme.patch
 4.10.x:<br />
 Patch using APST.patch
 <br />
-#### 3) ARCH install from AUR: linux-nvme (EASY/SLOW)
+#### 3) ARCH AUR:(EASY/SLOW)
+* use AUR helper of choice to install "linux-nvme"
 <br />
-Adjust your bootloader to boot linux-nvme
+* Adjust your bootloader to boot linux-nvme
 <br />
-### If you chose to trust me compiling for you:<br />
-#### 4) ARCH REPO: Add this to your /etc/pacman.conf (EASY/FAST)<br />
+
+### If you choose to trust me compiling it for you:<br />
+#### 4) ARCH REPO: (EASY/FAST)<br />
+* Add to your /etc/pacman.conf
 ```
 [linuxnvme]
 SigLevel = Never
 Server = http://linuxnvme.damige.net/repo
 ```
 <br />
-install with:
+* install with:
 ```
 pacman -S linuxnvme/linux-nvme
 ```
 <br />
-Adjust your bootloader to boot linux-nvme
+* Adjust your bootloader to boot linux-nvme
 <br />
+
 #### 5) ARCH binary download: (EASY/FAST)
-http://linuxnvme.damige.net/
+* Download: http://linuxnvme.damige.net/kernels/
+* Verify sums: https://github.com/damige/linux-nvme/blob/master/compiled/sums
 <br />
-install with:
+* install with:
 ```
 pacman -U linux-nvme-*
 ```
 <br />
-Adjust your bootloader to boot linux-nvme
+* Adjust your bootloader to boot linux-nvme
 <br />
 <br />
+
 ### To test if the APST is working try:
 <br />
 * install nvme-cli and: "nvme get-feature -f 0x0c -H /dev/nvme0" Expected output is: "Autonomous Power State Transition Enable (APSTE): Enabled"
