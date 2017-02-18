@@ -43,8 +43,9 @@ SigLevel = Never
 Server = http://linuxnvme.damige.net/repo
 ```
 <br />
-* install with:
+* Update db and install with:
 ```
+pacman -Sy
 pacman -S linuxnvme/linux-nvme
 ```
 <br />
