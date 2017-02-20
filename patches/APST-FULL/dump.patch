@@ -1,0 +1,35 @@
+From b22c0a26c43344d82aa51a2b16885620b5861606 Mon Sep 17 00:00:00 2001
+From: Andy Lutomirski <luto@kernel.org>
+Date: Thu, 1 Dec 2016 17:55:05 -0800
+Subject: [HACK] nvme: Dump raw APST configuration.
+
+---
+ drivers/nvme/host/core.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 344a4a7..cd1e0a2 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -1289,6 +1289,18 @@ static void nvme_configure_apst(struct nvme_ctrl *ctrl)
+ 		apste = 1;
+ 	}
+ 
++	{
++		unsigned char buf[sizeof(*table) * 2 + 1];
++		int i;
++		const char *t = (const char *)table;
++
++		for (i = 0; i < sizeof(*table); i++) {
++			sprintf(buf + 2*i, "%02x", (unsigned int)t[i]);
++		}
++
++		dev_info(ctrl->device, "Setting APST: enable = %u, value = %s\n", apste, buf);
++	}
++
+ 	ret = nvme_set_features(ctrl, NVME_FEAT_AUTO_PST, apste,
+ 				table, sizeof(*table), NULL);
+ 	if (ret)
+-- 
+cgit v0.12
+

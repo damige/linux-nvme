@@ -1,4 +1,4 @@
-From 8d35eb489e1ad98cab3b7d0c4be0b64425114461 Mon Sep 17 00:00:00 2001
+From 810d85f2fc7fd379deb2b8309d16d3b0d5a8af5b Mon Sep 17 00:00:00 2001
 From: Andy Lutomirski <luto@kernel.org>
 Date: Sat, 20 Aug 2016 23:40:38 -0700
 Subject: nvme: Enable autonomous power state transitions
@@ -46,15 +46,13 @@ This feature is quirked off on a known-buggy Samsung device.
 
 Signed-off-by: Andy Lutomirski <luto@kernel.org>
 ---
- drivers/nvme/host/core.c | 150 +++++++++++++++++++++++++++++++++++++++++++++++
- drivers/nvme/host/nvme.h |  12 ++++
- drivers/nvme/host/pci.c  |   2 +
- drivers/nvme/host/rdma.c |   2 +
+ drivers/nvme/host/core.c | 154 +++++++++++++++++++++++++++++++++++++++++++++++
+ drivers/nvme/host/nvme.h |  11 ++++
  include/linux/nvme.h     |   6 ++
- 5 files changed, 172 insertions(+)
+ 3 files changed, 171 insertions(+)
 
 diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index d393d64..0dea8f6 100644
+index d393d64..344a4a7 100644
 --- a/drivers/nvme/host/core.c
 +++ b/drivers/nvme/host/core.c
 @@ -26,6 +26,7 @@
@@ -77,11 +75,11 @@ index d393d64..0dea8f6 100644
  static LIST_HEAD(nvme_ctrl_list);
  static DEFINE_SPINLOCK(dev_list_lock);
  
-@@ -1196,6 +1202,120 @@ static void nvme_set_queue_limits(struct nvme_ctrl *ctrl,
+@@ -1196,6 +1202,122 @@ static void nvme_set_queue_limits(struct nvme_ctrl *ctrl,
  	blk_queue_write_cache(q, vwc, vwc);
  }
  
-+void nvme_configure_apst(struct nvme_ctrl *ctrl)
++static void nvme_configure_apst(struct nvme_ctrl *ctrl)
 +{
 +	/*
 +	 * APST (Autonomous Power State Transition) lets us program a
@@ -175,19 +173,21 @@ index d393d64..0dea8f6 100644
 +
 +	kfree(table);
 +}
-+EXPORT_SYMBOL_GPL(nvme_configure_apst);
 +
 +static void nvme_set_latency_tolerance(struct device *dev, s32 val)
 +{
 +	struct nvme_ctrl *ctrl = dev_get_drvdata(dev);
-+
 +	u64 latency;
 +
-+	if (val == PM_QOS_LATENCY_TOLERANCE_NO_CONSTRAINT ||
-+	    val == PM_QOS_LATENCY_ANY)
++	switch (val) {
++	case PM_QOS_LATENCY_TOLERANCE_NO_CONSTRAINT:
++	case PM_QOS_LATENCY_ANY:
 +		latency = U64_MAX;
-+	else
++		break;
++
++	default:
 +		latency = val;
++	}
 +
 +	if (ctrl->ps_max_latency_us != latency) {
 +		ctrl->ps_max_latency_us = latency;
@@ -198,7 +198,7 @@ index d393d64..0dea8f6 100644
  struct nvme_core_quirk_entry {
  	/*
  	 * NVMe model and firmware strings are padded with spaces.  For
-@@ -1209,6 +1329,16 @@ struct nvme_core_quirk_entry {
+@@ -1209,6 +1331,16 @@ struct nvme_core_quirk_entry {
  };
  
  static const struct nvme_core_quirk_entry core_quirks[] = {
@@ -215,7 +215,7 @@ index d393d64..0dea8f6 100644
  };
  
  /* match is null-terminated but idstr is space-padded. */
-@@ -1251,6 +1381,7 @@ int nvme_init_identify(struct nvme_ctrl *ctrl)
+@@ -1251,6 +1383,7 @@ int nvme_init_identify(struct nvme_ctrl *ctrl)
  	u64 cap;
  	int ret, page_shift;
  	u32 max_hw_sectors;
@@ -223,7 +223,7 @@ index d393d64..0dea8f6 100644
  
  	ret = ctrl->ops->reg_read32(ctrl, NVME_REG_VS, &ctrl->vs);
  	if (ret) {
-@@ -1311,6 +1442,11 @@ int nvme_init_identify(struct nvme_ctrl *ctrl)
+@@ -1311,6 +1444,11 @@ int nvme_init_identify(struct nvme_ctrl *ctrl)
  	ctrl->sgls = le32_to_cpu(id->sgls);
  	ctrl->kas = le16_to_cpu(id->kas);
  
@@ -235,7 +235,7 @@ index d393d64..0dea8f6 100644
  	if (ctrl->ops->is_fabrics) {
  		ctrl->icdoff = le16_to_cpu(id->icdoff);
  		ctrl->ioccsz = le32_to_cpu(id->ioccsz);
-@@ -1335,7 +1471,13 @@ int nvme_init_identify(struct nvme_ctrl *ctrl)
+@@ -1335,7 +1473,15 @@ int nvme_init_identify(struct nvme_ctrl *ctrl)
  
  	kfree(id);
  
@@ -244,12 +244,14 @@ index d393d64..0dea8f6 100644
 +	else if (!ctrl->apsta && prev_apsta)
 +		dev_pm_qos_hide_latency_tolerance(ctrl->device);
 +
++	nvme_configure_apst(ctrl);
++
  	ctrl->identified = true;
 +
  	return ret;
  }
  EXPORT_SYMBOL_GPL(nvme_init_identify);
-@@ -2073,6 +2215,14 @@ int nvme_init_ctrl(struct nvme_ctrl *ctrl, struct device *dev,
+@@ -2073,6 +2219,14 @@ int nvme_init_ctrl(struct nvme_ctrl *ctrl, struct device *dev,
  	list_add_tail(&ctrl->node, &nvme_ctrl_list);
  	spin_unlock(&dev_list_lock);
  
@@ -265,7 +267,7 @@ index d393d64..0dea8f6 100644
  out_release_instance:
  	nvme_release_instance(ctrl);
 diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
-index 9dccf71..6291291 100644
+index 9dccf71..590fc00 100644
 --- a/drivers/nvme/host/nvme.h
 +++ b/drivers/nvme/host/nvme.h
 @@ -77,6 +77,11 @@ enum nvme_quirks {
@@ -300,40 +302,6 @@ index 9dccf71..6291291 100644
  	/* Fabrics only */
  	u16 sqsize;
  	u32 ioccsz;
-@@ -264,6 +275,7 @@ int nvme_init_ctrl(struct nvme_ctrl *ctrl, struct device *dev,
- void nvme_uninit_ctrl(struct nvme_ctrl *ctrl);
- void nvme_put_ctrl(struct nvme_ctrl *ctrl);
- int nvme_init_identify(struct nvme_ctrl *ctrl);
-+void nvme_configure_apst(struct nvme_ctrl *ctrl);
- 
- void nvme_queue_scan(struct nvme_ctrl *ctrl);
- void nvme_remove_namespaces(struct nvme_ctrl *ctrl);
-diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-index 3faefab..2d2f0ed 100644
---- a/drivers/nvme/host/pci.c
-+++ b/drivers/nvme/host/pci.c
-@@ -1790,6 +1790,8 @@ static void nvme_reset_work(struct work_struct *work)
- 	if (result)
- 		goto out;
- 
-+	nvme_configure_apst(&dev->ctrl);
-+
- 	/*
- 	 * A controller that can not execute IO typically requires user
- 	 * intervention to correct. For such degraded controllers, the driver
-diff --git a/drivers/nvme/host/rdma.c b/drivers/nvme/host/rdma.c
-index 557f29b..a64b5db 100644
---- a/drivers/nvme/host/rdma.c
-+++ b/drivers/nvme/host/rdma.c
-@@ -1629,6 +1629,8 @@ static int nvme_rdma_configure_admin_queue(struct nvme_rdma_ctrl *ctrl)
- 
- 	nvme_start_keep_alive(&ctrl->ctrl);
- 
-+	nvme_configure_apst(&ctrl->ctrl);
-+
- 	return 0;
- 
- out_cleanup_queue:
 diff --git a/include/linux/nvme.h b/include/linux/nvme.h
 index 3d1c6f1..f929e8c 100644
 --- a/include/linux/nvme.h
