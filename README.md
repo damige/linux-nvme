@@ -46,7 +46,7 @@ Server = http://linuxnvme.damige.net/repo
 * Update db and install with:
 ```
 pacman -Sy
-pacman -S linuxnvme/linux-nvme
+pacman -S linuxnvme/linux-nvme linuxnvme/linux-nvme-headers linuxnvme/linux-nvme-docs
 ```
 <br />
 * Adjust your bootloader of choice to boot linux-nvme
