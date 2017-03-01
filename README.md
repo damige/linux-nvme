@@ -39,7 +39,7 @@ Patch using APST.patch
 * Add to your /etc/pacman.conf
 ```
 [linuxnvme]
-SigLevel = Never
+SigLevel = TrustAll
 Server = http://linuxnvme.damige.net/repo
 ```
 <br />
