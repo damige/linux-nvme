@@ -8,6 +8,8 @@ These patches enable NVME drives to enter lower power states.<br />
 For example: my case (XPS13, linux-nvme4.9.0) it decreases idle usage by ~1.5watt (see Benchmarks file)<br />
 <br />
 
+## I have built 4.11rc1 and it seems this patch has made mainline!
+
 ## 5 Ways to install:
 #### 1) ARCH manually compile kernels: (EASY/SLOW)
 
@@ -48,6 +50,8 @@ Server = http://linuxnvme.damige.net/repo
 pacman -Sy
 pacman -S linuxnvme/linux-nvme linuxnvme/linux-nvme-headers linuxnvme/linux-nvme-docs
 ```
+<br />
+My GPG key (for reference) is: A6255D31F80BEC97
 <br />
 * Adjust your bootloader of choice to boot linux-nvme
 <br />
