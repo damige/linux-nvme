@@ -8,6 +8,24 @@ These patches enable NVME drives to enter lower power states.<br />
 For example: my case (XPS13, linux-nvme4.9.0) it decreases idle usage by ~1.5watt (see Benchmarks file)<br />
 <br />
 
+## NEW INFO: I have built 4.11rc1 and it seems this patch has made mainline!
+It seems that the patch to disable SM951 has been merged also:
+
+```
+static const struct nvme_core_quirk_entry core_quirks[] = {
+	/*
+	 * Seen on a Samsung "SM951 NVMe SAMSUNG 256GB": using APST causes
+	 * the controller to go out to lunch.  It dies when the watchdog
+	 * timer reads CSTS and gets 0xffffffff.
+	 */
+	{
+		.vid = 0x144d,
+		.fr = "BXW75D0Q",
+		.quirks = NVME_QUIRK_NO_APST,
+	},
+```
+<br />
+
 ## 5 Ways to install:
 #### 1) ARCH manually compile kernels: (EASY/SLOW)
 
@@ -39,7 +57,7 @@ Patch using APST.patch
 * Add to your /etc/pacman.conf
 ```
 [linuxnvme]
-SigLevel = Never
+SigLevel = TrustAll
 Server = http://linuxnvme.damige.net/repo
 ```
 <br />
@@ -48,6 +66,8 @@ Server = http://linuxnvme.damige.net/repo
 pacman -Sy
 pacman -S linuxnvme/linux-nvme linuxnvme/linux-nvme-headers linuxnvme/linux-nvme-docs
 ```
+<br />
+My GPG key (for reference) is: A6255D31F80BEC97
 <br />
 * Adjust your bootloader of choice to boot linux-nvme
 <br />
@@ -77,9 +97,8 @@ pacman -U linux-nvme-*
 ### Known issues:
 In the latest patches the samsung SM951 (as used in the XPS 9350) has been disabled for NVME APST.
 This is due to some reported instability.<br />
-I have not included the patch disabling this nvme drive, as i use it myself. Incase you want the full APST patch its listed as APST-FULL.patch<br />
-I have had a single lock i can attribute to the ssd in the last 60 days, for me the benifit of these patches outways the occasional issue with specifically the SM951.
+I have not included the patch disabling this nvme drive, as i use it myself. Incase you want the full APST patch its listed as APST-FULL.patch
 <br />
 
 ### TODO:
-* Create and add signature to REPO
+* None?
