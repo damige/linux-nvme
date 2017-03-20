@@ -27,6 +27,7 @@ static const struct nvme_core_quirk_entry core_quirks[] = {
 <br />
 
 ## 5 Ways to install:
+
 #### 1) ARCH manually compile kernels: (EASY/SLOW)
 
 * git clone: https://github.com/damige/linux-nvme.git
@@ -46,6 +47,7 @@ Patch using APST.patch, pm_qos1.patch, pm_qos2.patch, pm_qos3.patch, nvme.patch
 4.10.x:<br />
 Patch using APST.patch
 <br />
+
 #### 3) ARCH AUR:(EASY/SLOW)
 * use AUR helper of choice to install "linux-nvme"
 * Adjust your bootloader of choice to boot linux-nvme
@@ -53,6 +55,7 @@ Patch using APST.patch
 
 ### If you choose to trust me compiling it for you:
 <br />
+
 #### 4) ARCH REPO: (EASY/FAST)
 <br />
 * Add to your /etc/pacman.conf
