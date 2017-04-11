@@ -1,4 +1,4 @@
-Some quick comparisons, these are not scientifc and your milage may vary, do your own testing too!
+Some quick comparisons, these are not scientific and your mileage may vary, do your own testing too!
 
 XPS 13 9350 | i7-6560U | 8GB | SM951 256G NVME | Intel 8260 | FHD
 Plasma 5.8.4 | X11 | Keyboard backlight off | Wifi Connected (2bars) | BT Connected (Headset) | 25% brightness | Idle 
@@ -34,7 +34,7 @@ Linux-NVME 4.9.0:
 23:18:40   0.1   0.0   0.2  99.7   0.1    1    205    117    1    0    0   3.69 
 23:18:50   0.1   0.0   0.1  99.9   0.0    1     97     21    0    0    0   4.64 
 23:19:00   0.2   0.0   0.2  99.7   0.0    1    193     43    1    0    0   3.75 
-^C-------- ----- ----- ----- ----- ----- ---- ------ ------ ---- ---- ---- ------ 
+-------- ----- ----- ----- ----- ----- ---- ------ ------ ---- ---- ---- ------ 
  Average   0.1   0.0   0.1  99.7   0.1  1.0  130.0   50.6  0.9  0.1  2.3   3.86 
   StdDev   0.1   0.0   0.0   0.1   0.1  0.0   53.1   31.3  1.0  0.3  3.3   0.32 
 -------- ----- ----- ----- ----- ----- ---- ------ ------ ---- ---- ---- ------ 
@@ -44,4 +44,4 @@ Linux-NVME 4.9.0:
 Summary:
 System:   3.86 Watts on average with standard deviation 0.32 
 
-a 1.56W gain when running idle, great! This is almost 30% power reduction for my device
+A 1.56W gain when running idle, great! This is almost 30% power reduction for my device.
