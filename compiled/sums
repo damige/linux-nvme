@@ -1,3 +1,17 @@
+4.10.14
+
+SHA256
+
+14487ff87cc8748c160e01c707db9e4121f283e3d10b15828a77f1e79b57116c  linux-nvme-4.10.14-1-x86_64.pkg.tar.xz
+768605a905640a0ffc8466a260d61fdaf12f915c8fbecad77e27fd2f9bbe6436  linux-nvme-docs-4.10.14-1-x86_64.pkg.tar.xz
+ed4b312a257336d20689abb75254ae9d6b8c6b2c5854d2e92c4a96c3e2401b38  linux-nvme-headers-4.10.14-1-x86_64.pkg.tar.xz
+
+MD5
+
+3fa7ff30620d635309399ca078f1a3ec  linux-nvme-4.10.14-1-x86_64.pkg.tar.xz
+86a080aaf27f1c45063b2867ff10a2e2  linux-nvme-docs-4.10.14-1-x86_64.pkg.tar.xz
+29a0f0e698cd97af595fdb524557d818  linux-nvme-headers-4.10.14-1-x86_64.pkg.tar.xz
+
 4.10.13
 
 SHA256
